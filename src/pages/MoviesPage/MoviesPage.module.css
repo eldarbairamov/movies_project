@@ -1,0 +1,38 @@
+.MoviesPage {
+    min-height: 720px;
+    background: white;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.pageButtons {
+    width: 500px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.pageButtons button {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #3c3c3c;
+    width: 150px;
+    padding: 10px;
+    margin: 5px;
+    transition: 0.5s;
+    background: transparent;
+    font-weight: bold;
+}
+
+.pageButtons button:hover {
+    transform: scale(0.95);
+    color: #dd4078;
+}
+
+.pageButtons button:disabled {
+    color: #a2a2a2;
+}

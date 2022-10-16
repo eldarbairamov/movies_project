@@ -1,0 +1,31 @@
+.Genres {
+    height: 30px;
+    margin: 20px auto 0 auto;
+    width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 0 0 50px 50px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.genresTitle {
+    font-size: 17px;
+    margin: 0 12px 0 12px;
+    width: 100px;
+    color: #3c3c3c;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    background: transparent;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+.genresTitle:hover {
+    transform: scale(0.95);
+    color: #dd4078;
+}
