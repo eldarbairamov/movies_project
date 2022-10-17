@@ -1,6 +1,65 @@
 .MovieCard {
-    border: 1px solid;
-    width: 600px;
-    height: 400px;
+    height: 283px;
+    width: 503px;
     margin: 10px;
+    transition: 0.5s;
 }
+
+.MovieCard img {
+    border-radius: 10px;
+}
+
+.MovieCard:hover {
+    transform: scale(1.01);
+}
+
+.info {
+    display: flex;
+    border-radius: 0 0 10px 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    position: relative;
+    bottom: 85px;
+    width: 500px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.info p {
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    color: white;
+}
+
+.border {
+    border-bottom: 1px solid white;
+    width: 200px;
+    margin: 5px auto 5px auto;
+}
+
+.noImage {
+    width: 280px;
+    position: relative;
+    left: 120px;
+    bottom: 15px;
+}
+
+.badgesSection {
+    display: flex;
+}
+
+ .rating {
+     position: relative;
+     top: 15px;
+     left: 10px;
+     box-sizing: border-box;
+     background: rgba(0, 0, 0, 0.5);
+     border-radius: 10px;
+     padding: 10px;
+ }
+
+ .ratingSection {
+     position: absolute;
+ }

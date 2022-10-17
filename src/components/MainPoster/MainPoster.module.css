@@ -1,0 +1,17 @@
+.MainPoster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1550px;
+    position: relative;
+    margin: 15px auto 0 auto;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.MainPoster img {
+    position: relative;
+    bottom: 40px;
+    width: 900px;
+}

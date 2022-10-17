@@ -6,5 +6,6 @@
 }
 
 .MainLayout {
+    background: #202630;
     transition: 0.5s;
 }

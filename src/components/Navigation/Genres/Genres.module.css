@@ -1,20 +1,24 @@
 .Genres {
-    height: 30px;
-    margin: 20px auto 0 auto;
-    width: 1000px;
+    height: 50px;
+    width: 1550px;
+    margin: 0 auto 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    border-radius: 0 0 50px 50px;
     font-weight: bold;
     cursor: default;
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
 }
+
 
 .genresTitle {
     font-size: 17px;
     margin: 0 12px 0 12px;
     width: 100px;
     color: #3c3c3c;
+    color: white;
+    /*color: seashell;*/
     border: none;
     border-radius: 10px;
     cursor: pointer;

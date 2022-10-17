@@ -9,7 +9,7 @@ const Genres = () => {
     const {genres} = useSelector(store => store.moviesReducer);
     const dispatch = useDispatch();
 
-    const [, setParams] = useSearchParams({page: '1'})
+    const [, setParams] = useSearchParams()
 
     useEffect(() => {
         dispatch(asyncMoviesActions.getGenres())
@@ -18,6 +18,8 @@ const Genres = () => {
     const getMovieByGenre = (id) => {
         dispatch(asyncMoviesActions.getMoviesByGenre({genreId: id}))
         dispatch(moviesActions.setCurrentGenreId(id))
+        dispatch(moviesActions.setGenreMode(true))
+        dispatch(moviesActions.setSearchMode(false))
         setParams()
     }
 

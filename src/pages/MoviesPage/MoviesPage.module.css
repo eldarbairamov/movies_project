@@ -1,31 +1,37 @@
 .MoviesPage {
     min-height: 720px;
-    background: white;
-    margin-top: 10px;
+    margin-top: -30px;
     box-sizing: border-box;
+    width: 1600px;
+    margin-bottom: 80px;
 }
 
 .pageButtons {
-    width: 500px;
-    height: 100px;
+    width: 400px;
+    height: 50px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
+    justify-content: center;
+    border-radius: 10px;
+    position: fixed;
+    top: 815px;
+    left: 650px;
+    background: rgba(0, 0, 0, 0.73);
 }
 
 .pageButtons button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    color: #3c3c3c;
+    color: white;
+    /*color: seashell;*/
     width: 150px;
     padding: 10px;
     margin: 5px;
     transition: 0.5s;
     background: transparent;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .pageButtons button:hover {
@@ -34,5 +40,5 @@
 }
 
 .pageButtons button:disabled {
-    color: #a2a2a2;
+    color: #787878;
 }
