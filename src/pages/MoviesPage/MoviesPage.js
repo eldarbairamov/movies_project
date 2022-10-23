@@ -35,12 +35,10 @@ const MoviesPage = () => {
     const nextPage = () => {
         setParams(value => ({page: +value.get('page') + 1}));
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-
     }
     const prevPage = () => {
         setParams(value => ({page: value.get('page') - 1}));
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-
     }
 
     return (
