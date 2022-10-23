@@ -46,6 +46,7 @@ const genresSlice = createSlice({
     extraReducers: builder => builder
         .addCase(getGenres.fulfilled, (state, {payload}) => {
             state.genres = payload
+            state.errors = null
         })
         .addCase(getMoviesByGenre.pending, (state) => {
             state.errors = null
@@ -55,6 +56,7 @@ const genresSlice = createSlice({
             state.moviesList = payload.results
             state.totalPages = payload.total_pages.toString()
             state.isLoading = false
+            state.errors = null
         })
         .addCase(getMoviesByGenre.rejected, (state, {payload}) => {
             state.isLoading = false

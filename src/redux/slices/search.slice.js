@@ -38,6 +38,7 @@ const searchSlice = createSlice({
             state.moviesList = payload.results
             state.totalPages = payload.total_pages.toString()
             state.isLoading = false
+            state.errors = null
         })
         .addCase(searchMovies.rejected, (state, {payload}) => {
             state.isLoading = false

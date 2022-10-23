@@ -32,6 +32,7 @@ const moviesSlice = createSlice({
             state.moviesList = payload.results
             state.totalPages = payload.total_pages.toString()
             state.isLoading = false
+            state.errors = null
         })
         .addCase(getAll.rejected, (state, {payload}) => {
             state.errors = payload
