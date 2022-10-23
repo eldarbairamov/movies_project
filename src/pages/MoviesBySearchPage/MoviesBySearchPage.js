@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react';
 
 import {useDispatch, useSelector} from "react-redux";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
-import css from './MoviesPage.module.css'
-import {appActions, asyncMoviesActions} from "../../redux";
+import css from './MoviesBySearchPage.module.css'
+import {appActions} from "../../redux";
+import {asyncSearchActions} from "../../redux/slices";
 import {AnimatedScale, Loader, MoviesList} from "../../components";
 
-const MoviesPage = () => {
-    const {totalPages, moviesList, errors, isLoading} = useSelector(state => state.moviesReducer);
-    const {isPrevPageEmpty, isNextPageEmpty} = useSelector(state => state.appReducer);
+const MoviesBySearchPage = () => {
+    const {totalPages, moviesList, searchKey, isLoading, errors} = useSelector(state => state.searchReducer);
+    const {isNextPageEmpty, isPrevPageEmpty, inputValue} = useSelector(state => state.appReducer);
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [params, setParams] = useSearchParams({page: '1'});
@@ -18,8 +20,7 @@ const MoviesPage = () => {
 
     useEffect(() => {
         dispatch(appActions.resetButtonsDisable());
-        dispatch(appActions.resetSearchValue());
-        dispatch(asyncMoviesActions.getAll({page: currentPage}));
+        dispatch(asyncSearchActions.searchMovies({searchKey: inputValue, page: currentPage}));
 
         if (currentPage === '1') {
             dispatch(appActions.prevPageEmpty());
@@ -30,21 +31,22 @@ const MoviesPage = () => {
         else {
             dispatch(appActions.resetButtonsDisable());
         }
+
     }, [currentPage]);
 
     const nextPage = () => {
-        setParams(value => ({page: +value.get('page') + 1}));
+        setParams(value => ({keyword: searchKey, page: +value.get('page') + 1}));
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-
     }
     const prevPage = () => {
-        setParams(value => ({page: value.get('page') - 1}));
+        setParams(value => ({keyword: searchKey, page: value.get('page') - 1}));
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-
     }
 
+    const home = () => navigate('/');
+
     return (
-        <section className={css.MoviesPage}>
+        <section className={css.MoviesBySearchPage}>
             {errors && <AnimatedScale><p className={css.errors}> {errors} </p></AnimatedScale>}
 
             {isLoading
@@ -55,6 +57,7 @@ const MoviesPage = () => {
             {!errors &&
                 <div className={css.pageButtons} data-loading={isLoading}>
                     <button disabled={isPrevPageEmpty} onClick={prevPage}>back</button>
+                    <button onClick={home}>home</button>
                     <button disabled={isNextPageEmpty} onClick={nextPage}>next</button>
                 </div>
             }
@@ -62,4 +65,4 @@ const MoviesPage = () => {
     );
 };
 
-export {MoviesPage};
+export {MoviesBySearchPage};

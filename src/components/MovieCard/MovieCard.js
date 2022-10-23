@@ -1,16 +1,21 @@
 import React from 'react';
 
-import css from './MovieCard.module.css'
+import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+
+import css from './MovieCard.module.css'
 import ReactStars from "react-rating-stars-component/dist/react-stars";
-import {PosterPreview} from "../PosterPreview/PosterPreview";
-import {GenreBadge} from "../GenreBadge/GenreBadge";
+import {GenreBadge, PosterPreview, NoPoster, AnimatedFadeIn} from "../index";
 
 const MovieCard = ({movie}) => {
-    const {title, backdrop_path} = movie;
-    const {genres} = useSelector(store => store.moviesReducer);
+    const {title, poster_path, genre_ids} = movie;
 
-    const firstExample = {
+    const {genres} = useSelector(state => state.genresReducer);
+    const navigate = useNavigate();
+
+    const moviePath = movie.title.toLowerCase().replaceAll(' ', '_').replace(':', '');
+
+    const ratingStars = {
         count: 10,
         size: 15,
         value: movie.vote_average,
@@ -18,38 +23,41 @@ const MovieCard = ({movie}) => {
         isHalf: true,
     };
 
-    const currentMovieGenres = movie.genre_ids
     const namedGenres = []
 
-    for (let i = 0; i < genres.length; i++) {
-        for (let j = 0; j < currentMovieGenres.length; j++) {
-            if (currentMovieGenres[j] === genres[i].id) {
-                namedGenres.push(genres[i].name)
-            }
+    genres.forEach(item => {
+        if (genre_ids.includes(item.id)) {
+            namedGenres.push(item.name)
         }
-    }
+    })
+
+    const movieInfo = () => {
+        navigate(`/movies/info/${moviePath}`, {state: {movie: movie, genres: namedGenres}});
+        window.scrollTo({top: 50, left: 0, behavior: 'smooth'});
+    };
 
     return (
-        <section className={css.MovieCard}>
-            <div className={css.ratingSection}>
-                <ReactStars classNames={css.rating} {...firstExample}/>
-            </div>
-
-            {backdrop_path
-                ? <PosterPreview path={backdrop_path}/>
-                : <img className={css.noImage} src={require('./no_image.png')} alt={'no_image'}/>
-            }
-
-            <div className={css.info}>
-                <p>{title}</p>
-                <p className={css.border}></p>
-                <div className={css.badgesSection}>
-                    {namedGenres.map((item, index) => <GenreBadge key={index + 1}> {item} </GenreBadge>)}
+        <AnimatedFadeIn>
+            <section className={css.MovieCard} onClick={movieInfo}>
+                <div className={css.ratingSection}>
+                    <ReactStars classNames={css.rating} {...ratingStars}/>
                 </div>
 
-            </div>
+                {poster_path
+                    ? <PosterPreview path={poster_path}/>
+                    : <NoPoster/>
+                }
 
-        </section>
+                <div className={css.info}>
+                    <p>{title}</p>
+                    <p className={css.border}></p>
+                    <div className={css.badgesSection}>
+                        {namedGenres.map((item, index) => <GenreBadge key={index + 1}> {item} </GenreBadge>)}
+                    </div>
+
+                </div>
+            </section>
+        </AnimatedFadeIn>
     );
 };
 

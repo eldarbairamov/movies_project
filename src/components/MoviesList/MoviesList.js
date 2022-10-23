@@ -2,14 +2,11 @@ import React from 'react';
 
 import css from './MoviesList.module.css'
 import {MovieCard} from "../MovieCard/MovieCard";
-import {useSelector} from "react-redux";
 
-const MoviesList = () => {
-    const {moviesList} = useSelector(store => store.moviesReducer)
-
+const MoviesList = ({movies}) => {
     return (
         <section className={css.MoviesList}>
-            {moviesList.map(item => <MovieCard movie={item} key={item.id}/>)}
+            {movies.map(item => <MovieCard movie={item} key={item.id}/>)}
         </section>
     );
 };

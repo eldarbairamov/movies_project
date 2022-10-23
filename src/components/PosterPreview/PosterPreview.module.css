@@ -1,0 +1,7 @@
+.PosterPreview img {
+    border-radius: 10px;
+    min-height: 550px;
+    max-height: 550px;
+    min-width: 372px;
+    max-width: 372px;
+}

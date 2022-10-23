@@ -1,4 +1,4 @@
-.MoviesPage{
+.MoviesBySearchPage {
     margin-top: -30px;
     box-sizing: border-box;
     margin-bottom: 100px;
@@ -42,11 +42,11 @@
     color: #787878;
 }
 
+.pageButtons[data-loading='true'] {
+    opacity: 0;
+}
+
 .errors {
     text-align: center;
     margin-top: 220px;
-}
-
-.pageButtons[data-loading='true'] {
-    opacity: 0;
 }

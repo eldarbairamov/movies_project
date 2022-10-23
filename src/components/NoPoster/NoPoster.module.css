@@ -1,0 +1,10 @@
+.NoPoster{
+    border-radius: 10px;
+    min-height: 557px;
+    max-height: 550px;
+    min-width: 366px;
+    max-width: 366px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

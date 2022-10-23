@@ -1,34 +1,44 @@
 import React from 'react';
 
-import css from './Navbar.module.css'
-import night from './NightNavbar.module.css'
-
 import {useDispatch, useSelector} from "react-redux";
+
+import css from './Navbar.module.css'
 import {appActions} from "../../../redux";
+import {UserInfo} from "../../UserInfo/UserInfo";
+import {AnimatedScale} from "../../UI/Animated.scale/Animated.scale";
+import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
-    const {switchThemeMode} = useSelector(store => store.appReducer)
-    const text = !switchThemeMode ? css.text : night.text
+    const {switchThemeMode, isSignIn} = useSelector(state => state.appReducer)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const switchTheme = () => dispatch(appActions.switchTheme(!switchThemeMode))
+    const switchTheme = () => dispatch(appActions.switchTheme(!switchThemeMode));
+    const signIn = () => dispatch(appActions.signIn(true));
 
     return (
         <section>
             <div className={css.Navbar}>
+                <AnimatedScale>
+                    <div onClick={() => navigate('/')} className={css.title}><p>okten movies hub</p></div>
+                </AnimatedScale>
 
-                <div className={css.title}>
-                    <p>okten movies hub</p>
-                </div>
+                {isSignIn && <UserInfo/>}
+
+                {!isSignIn &&
+                    <AnimatedScale>
+                        <div className={css.signSection} onClick={signIn}>
+                            <p className={css.signIn} data-theme={switchThemeMode}>sign in</p>
+                            <img className={css.hello} src={require('./hello.png')} alt=""/>
+                        </div>
+                    </AnimatedScale>}
 
                 <div className={css.switcher} onClick={switchTheme}>
-                    <p className={text}>switch</p>
-                    {!switchThemeMode
-                        ? <img src={require('./moon.png')} alt="moon"/>
-                        : <img src={require('./sun.png')} alt="sun"/>
-                    }
-                    <p className={text}>me</p>
+                    <p className={css.switchText} data-theme={switchThemeMode}>switch</p>
+
+                    {!switchThemeMode && <AnimatedScale><img src={require('./moon.png')} alt="moon"/></AnimatedScale>}
+                    {switchThemeMode && <AnimatedScale><img src={require('./sun.png')} alt="sun"/></AnimatedScale>}
                 </div>
             </div>
         </section>

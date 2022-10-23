@@ -12,6 +12,7 @@
 }
 
 .title {
+    cursor: pointer;
     width: 250px;
     height: 40px;
     display: flex;
@@ -25,13 +26,13 @@
 
 @keyframes gradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
     50% {
         background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
@@ -44,28 +45,43 @@
     cursor: pointer;
 }
 
-.switcher:active {
-    transform: scale(0.9);
-}
+.switcher:active {transform: scale(0.9);}
 
-.text{
+.switchText{
     color: black;
     display: inline;
-    /*animation: blinker 3s linear infinite;*/
 }
 
-/*@keyframes blinker {*/
-/*    0% {*/
-/*        opacity: 0;*/
-/*    }*/
-/*    50% {*/
-/*        opacity: .5;*/
-/*    }*/
-/*    100% {*/
-/*        opacity: 1;*/
-/*    }*/
-/*}*/
+.signSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.signIn {
+    color: black;
+    font-weight: normal;
+    display: inline;
+}
+
+.hello {
+    width: 40px;
+    margin: 5px;
+    display: inline;
+}
 
 .switcher img {
     width: 60px;
+}
+
+/*Night mode*/
+
+.switchText[data-theme='true'] {
+    color: white;
+    display: inline;
+}
+
+.signIn[data-theme='true'] {
+    color: white;
 }

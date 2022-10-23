@@ -1,32 +1,39 @@
 import React, {useEffect} from 'react';
 
-import css from './Genres.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {asyncMoviesActions, moviesActions} from "../../../redux";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+
+import css from './Genres.module.css'
+import {appActions} from "../../../redux";
+import {asyncGenresActions, genresActions} from "../../../redux/slices";
 
 const Genres = () => {
-    const {genres} = useSelector(store => store.moviesReducer);
-    const dispatch = useDispatch();
+    const {genres} = useSelector(state => state.genresReducer);
 
-    const [, setParams] = useSearchParams()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(asyncMoviesActions.getGenres())
-    }, [dispatch])
+        dispatch(asyncGenresActions.getGenres())
+    }, [dispatch]);
 
-    const getMovieByGenre = (id) => {
-        dispatch(asyncMoviesActions.getMoviesByGenre({genreId: id}))
-        dispatch(moviesActions.setCurrentGenreId(id))
-        dispatch(moviesActions.setGenreMode(true))
-        dispatch(moviesActions.setSearchMode(false))
-        setParams()
-    }
+    const getMovieByGenre = (id, name) => {
+        const moviePath = name.toLowerCase().replaceAll(' ', '_');
+
+        dispatch(asyncGenresActions.getMoviesByGenre({genreId: id}));
+        dispatch(genresActions.setCurrentGenreId(id));
+        dispatch(appActions.setGenreMode(true));
+        dispatch(appActions.setSearchMode(false));
+        dispatch(appActions.resetSearchValue());
+
+        navigate(`/genres/${moviePath}`);
+    };
 
     return (
         <section className={css.Genres}>
             {genres.map(item =>
-                <button key={item.id} onClick={() => getMovieByGenre(item.id)} className={css.genresTitle}> {item.name} </button>)}
+                <button key={item.id} onClick={() => getMovieByGenre(item.id, item.name)}
+                        className={css.genresTitle}> {item.name} </button>)}
         </section>
     );
 };

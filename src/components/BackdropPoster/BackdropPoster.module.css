@@ -1,0 +1,5 @@
+.BackdropPoster img {
+    min-height: 400px;
+    max-height: 400px;
+    border-radius: 10px;
+}

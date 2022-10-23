@@ -1,0 +1,51 @@
+.UserInfo {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.UserInfo img {
+    width: 40px;
+    margin: 5px;
+}
+
+.UserInfo p {
+    margin: 2px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.blinker {
+    animation: blinker 3s linear infinite;
+}
+
+.signOut {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*Night mode*/
+
+.UserInfo[data-theme='true'] {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
