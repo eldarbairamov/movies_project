@@ -17,7 +17,7 @@ const searchMovies = createAsyncThunk(
             const {data} = await moviesService.searchMovies(searchKey, page)
             return data
         } catch (e) {
-            return rejectWithValue(`${e.message} ;(`)
+            return rejectWithValue(`No access to movies. ${e.message} ;(`)
         }
     }
 );

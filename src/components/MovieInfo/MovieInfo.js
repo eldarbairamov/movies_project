@@ -32,7 +32,6 @@ const MovieInfo = () => {
         <section className={css.MovieInfo}>
             <AnimatedFadeIn>
                 <div className={css.content}>
-
                     {state.movie.backdrop_path
                         ? <div className={css.poster}><BackdropPoster path={state.movie.backdrop_path}/></div>
                         : <div className={css.noPoster}><NoPoster/></div>
@@ -51,12 +50,11 @@ const MovieInfo = () => {
                             {state.genres.map((item, index) => <GenreBadge key={index + 1}> {item} </GenreBadge>)}
                         </div>
                     </div>
-
-                    <div className={css.pageButtons}>
-                        <button onClick={back}>back</button>
-                    </div>
                 </div>
             </AnimatedFadeIn>
+            <div className={css.pageButtons}>
+                <button onClick={back}>back</button>
+            </div>
         </section>
     );
 };

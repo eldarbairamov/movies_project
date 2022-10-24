@@ -11,6 +11,12 @@
     width: 1550px;
 }
 
+.errors {
+    font-weight: normal;
+    font-size: 20px;
+    color: white;
+
+}
 
 .genresTitle {
     font-size: 17px;

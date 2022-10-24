@@ -18,7 +18,7 @@ const getGenres = createAsyncThunk(
             const {data: {genres}} = await moviesService.getGenres()
             return genres
         } catch (e) {
-            return rejectWithValue(e.message)
+            return rejectWithValue(`No access to genres. ${e.message} ;(`)
         }
     }
 );
@@ -48,6 +48,9 @@ const genresSlice = createSlice({
             state.genres = payload
             state.errors = null
         })
+        .addCase(getGenres.rejected, (state, {payload})=> {
+            state.errors = payload
+        })
         .addCase(getMoviesByGenre.pending, (state) => {
             state.errors = null
             state.isLoading = true
@@ -64,8 +67,8 @@ const genresSlice = createSlice({
         })
 });
 
-const {reducer: genresReducer, actions: {setCurrentGenreId, setNamedGenres}} = genresSlice;
+const {reducer: genresReducer, actions: {setCurrentGenreId}} = genresSlice;
 
 export {genresReducer};
 export const asyncGenresActions = {getGenres, getMoviesByGenre};
-export const genresActions = {setCurrentGenreId, setNamedGenres};
+export const genresActions = {setCurrentGenreId};

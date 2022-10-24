@@ -37,11 +37,11 @@ const MoviesBySearchPage = () => {
     const nextPage = () => {
         setParams(value => ({keyword: searchKey, page: +value.get('page') + 1}));
         window.scrollTo({top: 340, left: 0, behavior: 'smooth'})
-    }
+    };
     const prevPage = () => {
         setParams(value => ({keyword: searchKey, page: value.get('page') - 1}));
         window.scrollTo({top: 340, left: 0, behavior: 'smooth'})
-    }
+    };
 
     const home = () => navigate('/');
 
