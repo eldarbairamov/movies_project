@@ -5,7 +5,7 @@ import {useSearchParams} from "react-router-dom";
 
 import css from './MoviesPage.module.css'
 import {appActions, asyncMoviesActions} from "../../redux";
-import {AnimatedScale, Loader, MoviesList} from "../../components";
+import {Scale, Loader, MoviesList} from "../../components";
 
 const MoviesPage = () => {
     const {totalPages, moviesList, errors, isLoading} = useSelector(state => state.moviesReducer);
@@ -43,7 +43,7 @@ const MoviesPage = () => {
 
     return (
         <section className={css.MoviesPage}>
-            {errors && <AnimatedScale><p className={css.errors}> {errors} </p></AnimatedScale>}
+            {errors && <Scale><p className={css.errors}> {errors} </p></Scale>}
 
             {isLoading
                 ? <Loader/>

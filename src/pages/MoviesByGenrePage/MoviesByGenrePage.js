@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import css from './MoviesByGenrePage.module.css'
 import {appActions} from "../../redux";
 import {asyncGenresActions} from "../../redux/slices";
-import {AnimatedScale, Loader, MoviesList} from "../../components";
+import {Scale, Loader, MoviesList} from "../../components";
 
 const MoviesByGenrePage = () => {
     const {currentGenreId, totalPages, moviesList, errors, isLoading} = useSelector(state => state.genresReducer);
@@ -47,7 +47,7 @@ const MoviesByGenrePage = () => {
 
     return (
         <section className={css.MoviesByGenrePage}>
-            {errors && <AnimatedScale><p className={css.errors}> {errors} </p></AnimatedScale>}
+            {errors && <Scale><p className={css.errors}> {errors} </p></Scale>}
 
             {isLoading
                 ? <Loader/>

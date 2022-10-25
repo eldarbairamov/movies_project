@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import css from './Genres.module.css'
 import {appActions} from "../../../redux";
 import {asyncGenresActions, genresActions} from "../../../redux/slices";
-import {AnimatedScale} from "../../UI/Animated.scale/Animated.scale";
+import {Scale} from "../../UI/animations/Scale/Scale";
 
 const Genres = () => {
     const {genres, errors} = useSelector(state => state.genresReducer);
@@ -32,7 +32,7 @@ const Genres = () => {
 
     return (
         <section className={css.Genres}>
-            {errors && <AnimatedScale><p className={css.errors}> {errors} </p></AnimatedScale>}
+            {errors && <Scale><p className={css.errors}> {errors} </p></Scale>}
 
             {genres.map(item =>
                 <button key={item.id} onClick={() => getMovieByGenre(item.id, item.name)}

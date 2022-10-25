@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 
 import css from './MovieCard.module.css'
 import ReactStars from "react-rating-stars-component/dist/react-stars";
-import {GenreBadge, PosterPreview, NoPoster, AnimatedFadeIn} from "../index";
+import {GenreBadge, PosterPreview, NoPoster, FadeIn} from "../index";
 
 const MovieCard = ({movie}) => {
     const {title, poster_path, genre_ids} = movie;
@@ -37,7 +37,7 @@ const MovieCard = ({movie}) => {
     };
 
     return (
-        <AnimatedFadeIn>
+        <FadeIn>
             <section className={css.MovieCard} onClick={movieInfo}>
                 <div className={css.ratingSection}>
                     <ReactStars classNames={css.rating} {...ratingStars}/>
@@ -57,7 +57,7 @@ const MovieCard = ({movie}) => {
 
                 </div>
             </section>
-        </AnimatedFadeIn>
+        </FadeIn>
     );
 };
 

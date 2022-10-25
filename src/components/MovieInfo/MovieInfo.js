@@ -8,7 +8,7 @@ import css from './MovieInfo.module.css'
 import {BackdropPoster} from "../BackdropPoster/BackdropPoster";
 import ReactStars from "react-rating-stars-component";
 import {GenreBadge} from "../GenreBadge/GenreBadge";
-import {AnimatedFadeIn} from "../UI/Animated.fadeIn/Animated.fadeIn";
+import {FadeIn} from "../UI/animations/FadeIn/FadeIn";
 import {NoPoster} from "../NoPoster/NoPoster";
 
 
@@ -30,7 +30,7 @@ const MovieInfo = () => {
 
     return (
         <section className={css.MovieInfo}>
-            <AnimatedFadeIn>
+            <FadeIn>
                 <div className={css.content}>
                     {state.movie.backdrop_path
                         ? <div className={css.poster}><BackdropPoster path={state.movie.backdrop_path}/></div>
@@ -51,7 +51,7 @@ const MovieInfo = () => {
                         </div>
                     </div>
                 </div>
-            </AnimatedFadeIn>
+            </FadeIn>
             <div className={css.pageButtons}>
                 <button onClick={back}>back</button>
             </div>

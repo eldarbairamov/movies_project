@@ -6,7 +6,7 @@ import {useNavigate, useSearchParams} from "react-router-dom";
 import css from './MoviesBySearchPage.module.css'
 import {appActions} from "../../redux";
 import {asyncSearchActions} from "../../redux/slices";
-import {AnimatedScale, Loader, MoviesList} from "../../components";
+import {Scale, Loader, MoviesList} from "../../components";
 
 const MoviesBySearchPage = () => {
     const {totalPages, moviesList, searchKey, isLoading, errors} = useSelector(state => state.searchReducer);
@@ -47,7 +47,7 @@ const MoviesBySearchPage = () => {
 
     return (
         <section className={css.MoviesBySearchPage}>
-            {errors && <AnimatedScale><p className={css.errors}> {errors} </p></AnimatedScale>}
+            {errors && <Scale><p className={css.errors}> {errors} </p></Scale>}
 
             {isLoading
                 ? <Loader/>

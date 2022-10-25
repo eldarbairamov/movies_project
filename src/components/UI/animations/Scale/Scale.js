@@ -2,7 +2,7 @@ import React from 'react';
 
 import { motion } from "framer-motion";
 
-const AnimatedScale = ({children}) => {
+const Scale = ({children}) => {
     return (
         <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -14,4 +14,4 @@ const AnimatedScale = ({children}) => {
     );
 };
 
-export {AnimatedScale};
+export {Scale};

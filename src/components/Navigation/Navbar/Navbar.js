@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import css from './Navbar.module.css'
 import {appActions} from "../../../redux";
 import {UserInfo} from "../../UserInfo/UserInfo";
-import {AnimatedScale} from "../../UI/Animated.scale/Animated.scale";
+import {Scale} from "../../UI/animations/Scale/Scale";
 import {useNavigate} from "react-router-dom";
 
 const Navbar = () => {
@@ -20,25 +20,25 @@ const Navbar = () => {
     return (
         <section>
             <div className={css.Navbar}>
-                <AnimatedScale>
+                <Scale>
                     <div onClick={() => navigate('/')} className={css.title}><p>okten movies hub</p></div>
-                </AnimatedScale>
+                </Scale>
 
                 {isSignIn && <UserInfo/>}
 
                 {!isSignIn &&
-                    <AnimatedScale>
+                    <Scale>
                         <div className={css.signSection} onClick={signIn}>
                             <p className={css.signIn} data-theme={switchThemeMode}>sign in</p>
                             <img className={css.hello} src={require('./hello.png')} alt=""/>
                         </div>
-                    </AnimatedScale>}
+                    </Scale>}
 
                 <div className={css.switcher} onClick={switchTheme}>
                     <p className={css.switchText} data-theme={switchThemeMode}>switch</p>
 
-                    {!switchThemeMode && <AnimatedScale><img src={require('./moon.png')} alt="moon"/></AnimatedScale>}
-                    {switchThemeMode && <AnimatedScale><img src={require('./sun.png')} alt="sun"/></AnimatedScale>}
+                    {!switchThemeMode && <Scale><img src={require('./moon.png')} alt="moon"/></Scale>}
+                    {switchThemeMode && <Scale><img src={require('./sun.png')} alt="sun"/></Scale>}
                 </div>
             </div>
         </section>
